@@ -1,7 +1,8 @@
 import { JSDOM } from 'jsdom';
-import Build from './ui.js';
+import Build from './ui';
 
 const dom = new JSDOM(`<!DOCTYPE html><body><ul id="addList" class="flcol"></body>`);// eslint-disable-line
+
 global.document = dom.window.document;
 global.window = dom.window;
 
@@ -14,7 +15,7 @@ const elementToAdd = {
 
 Build.drawHtmlElement(elementToAdd, addList);
 
-test('Add exactly one \'li\' element', () => {
+test("Add exactly one 'li' element", () => {
   expect(addList.childElementCount).toBe(1);
 });
 
@@ -32,8 +33,7 @@ describe('Test remove an add methods in Build class', () => {
   test('Remove element from DOM and from LocalStorage', () => {
     expect(Build.getFromLocalStore()).toBeDefined();
   });
-});
-
+  
 const textarea = document.querySelector('textarea');
 describe('Edit function', () => {
   test('edit task with click event call', () => {

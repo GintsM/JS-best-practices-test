@@ -1,14 +1,19 @@
 import './style.css';
-import Tasks from './tasks.js';
-import Build from './ui.js';
+import Tasks from './tasks';
+import Build from './ui';
 
+const build = new Build();
 const addList = document.getElementById('addList');
-Build.addToPage(addList);
+build.addToPage(addList);
 
 const addTask = document.getElementById('move');
 addTask.addEventListener('click', () => {
   const taskToAdd = document.getElementById('addTask');
-  const newTask = new Tasks(taskToAdd.value, false, Build.lastElementsIndex(addList));
+  const newTask = new Tasks(
+    taskToAdd.value,
+    false,
+    Build.lastElementsIndex(addList),
+  );
   Build.drawHtmlElement(newTask, addList);
   Build.addTaskToLocalStore(newTask);
   taskToAdd.value = '';
