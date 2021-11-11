@@ -88,11 +88,16 @@ export default class Build {
         Build.removeCompletedTasks(box);
       }
     });
+    Build.orginizeID();
     const tasks = Build.getFromLocalStore();
     const tasksToDo = tasks.filter((task) => !task.complete);
     Build.organizeIndexLSt(tasksToDo);
     Build.addToLocalStore(tasksToDo);
-    window.location.reload(false);
+  }
+
+  static orginizeID() {
+    const elements = Build.checkButtons();
+    elements.forEach((elem, index) => elem.setAttribute('id', `${index + 1}`));
   }
 
   static organizeIndexLSt(arr) {
@@ -123,8 +128,8 @@ export default class Build {
 
   static completeTaskLocal(e) {
     const toChange = Build.getFromLocalStore();
-    const i = parseInt(e.target.id, 10) - 1;
-    toChange[i].complete = e.target.checked;
+    const i = parseInt(e.id, 10) - 1;
+    toChange[i].complete = e.checked;
     Build.addToLocalStore(toChange);
   }
 }
