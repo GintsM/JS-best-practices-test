@@ -23,7 +23,11 @@ describe('Test remove an add methods in Build class', () => {
   test('Add elements properties to LocalStorage', () => {
     expect(Build.getFromLocalStore()[0].complete).toBe(false);
   });
-
+  test('Remove element from DOM and from LocalStorage', () => {
+    const target = document.getElementById('0 trash');
+    Build.removeTask(target, 0);
+    expect(addList.childElementCount).toBe(0);
+  });
   test('Remove element from DOM and from LocalStorage', () => {
     expect(Build.getFromLocalStore()).toBeDefined();
   });
