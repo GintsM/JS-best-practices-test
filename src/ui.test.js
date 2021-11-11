@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import Build from './ui';
+import Build from './ui.js';
 
 const dom = new JSDOM(`<!DOCTYPE html><body><ul id="addList" class="flcol"></body>`);// eslint-disable-line
 
@@ -33,7 +33,8 @@ describe('Test remove an add methods in Build class', () => {
   test('Remove element from DOM and from LocalStorage', () => {
     expect(Build.getFromLocalStore()).toBeDefined();
   });
-  
+});
+
 const textarea = document.querySelector('textarea');
 describe('Edit function', () => {
   test('edit task with click event call', () => {
