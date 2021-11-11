@@ -31,11 +31,12 @@ npm install
 
 # To run development branch
 npm run start
+
+# To run tests
+npm run test
 ```
 
-### Run tests
-
-For Linters:
+### Run linters
 
 ```bash
 # To check for CSS errors
