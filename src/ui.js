@@ -1,8 +1,12 @@
+import Store from './store.js';
+
+const Storage = new Store();
+
 export default class Build {
   static getFromLocalStore() {
     let task;
-    if (localStorage.getItem('task')) {
-      task = JSON.parse(localStorage.getItem('task'));
+    if (Storage.getItem('task')) {
+      task = JSON.parse(Storage.getItem('task'));
     } else {
       task = [];
     }
@@ -12,11 +16,11 @@ export default class Build {
   static addTaskToLocalStore(task) {
     const storeElement = Build.getFromLocalStore();
     storeElement.push(task);
-    localStorage.setItem('task', JSON.stringify(storeElement));
+    Storage.setItem('task', JSON.stringify(storeElement));
   }
 
   static addToLocalStore(arr) {
-    localStorage.setItem('task', JSON.stringify(arr));
+    Storage.setItem('task', JSON.stringify(arr));
   }
 
   static addToPage(place) {
@@ -29,7 +33,7 @@ export default class Build {
     const storedBooks = Build.getFromLocalStore();
     storedBooks.splice(index, 1);
     Build.organizeIndexLSt(storedBooks);
-    localStorage.setItem('task', JSON.stringify(storedBooks));
+    Storage.setItem('task', JSON.stringify(storedBooks));
     target.parentElement.parentElement.parentElement.remove();
   }
 

@@ -1,28 +1,34 @@
-/**
- * @jest-environment jsdom
- */
-
+import { JSDOM } from 'jsdom';
 import Build from './ui.js';
 
-const addList = document.createElement('ul');
+const dom = new JSDOM(`<ul id="addList" class="flcol">`);// eslint-disable-line
+global.document = dom.window.document;
+global.window = dom.window;
+
+const addList = document.getElementById('addList');
 const elementToAdd = {
   task: 'Hello list',
   complete: false,
   index: 0,
 };
-Build.addTaskToLocalStore(elementToAdd);
 
-// test for Add function, Build.drawHtmlElement
+Build.drawHtmlElement(elementToAdd, addList);
+
 test('Add exactly one \'li\' element', () => {
-  Build.drawHtmlElement(elementToAdd, addList);
   expect(addList.childElementCount).toBe(1);
 });
 
+Build.addTaskToLocalStore(elementToAdd);
 describe('Test remove an add methods in Build class', () => {
-  test('Add elements properties to Local(mocked)Storage', () => {    
+  test('Add elements properties to LocalStorage', () => {
     expect((Build.getFromLocalStore())[0].complete).toBe(false);
   });
-  test('Remove element from DOM and from Local(mocked)Storage', () => {
+  test('Remove element from DOM and from LocalStorage', () => {
+    const target = document.getElementById('0 trash');
+    Build.removeTask(target, 0);
+    expect(addList.childElementCount).toBe(0);
+  });
+  test('Remove element from DOM and from LocalStorage', () => {
+    expect(Build.getFromLocalStore()).toBeDefined();
   });
 });
-
