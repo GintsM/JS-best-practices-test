@@ -48,16 +48,12 @@ npx eslint .
 
 ## Authors
 
-👤 **Uzair Ali**
-
-- GitHub: [@uzairali19](https://github.com/uzairali19)
-- Twitter: [@uzairali751](https://twitter.com/Uzairali751)
-- LinkedIn: [Uzair Ali](https://www.linkedin.com/in/uzair-ali-964187166/)
-
 👤 **Gints Misins**
 
 - GitHub: [GintsM](https://github.com/GintsM) 
 - LinkedIn: [Gints Misins](https://www.linkedin.com/in/gints-misins-756b2321a/)
+
+👤 **Uzair Ali**
 
 ## 🤝 Contributing
 
